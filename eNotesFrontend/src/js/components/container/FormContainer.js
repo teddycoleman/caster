@@ -5,7 +5,8 @@ class FormContainer extends Component {
   constructor() {
     super();
     this.state = {
-      seo_title: ""
+      first_name: "",
+      last_name: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -13,15 +14,23 @@ class FormContainer extends Component {
     this.setState({ [event.target.id]: event.target.value });
   }
   render() {
-    const { seo_title } = this.state;
+    const { first_name, last_name } = this.state;
     return (
-      <form id="article-form">
+      <form id="enote-form">
         <Input
-          text="SEO title"
-          label="seo_title"
+          text="First Name"
+          label="first_name"
           type="text"
-          id="seo_title"
-          value={seo_title}
+          id="first_name"
+          value={first_name}
+          handleChange={this.handleChange}
+        />
+        <Input
+          text="Last Name"
+          label="last_name"
+          type="text"
+          id="last_name"
+          value={last_name}
           handleChange={this.handleChange}
         />
       </form>
@@ -30,5 +39,5 @@ class FormContainer extends Component {
 }
 export default FormContainer;
 
-const wrapper = document.getElementById("create-article-form");
+const wrapper = document.getElementById("create-enote-form");
 wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;
