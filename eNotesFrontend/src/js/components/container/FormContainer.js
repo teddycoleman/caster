@@ -16,28 +16,28 @@ class FormContainer extends Component {
   render() {
     const { first_name, last_name } = this.state;
     return (
-      <form id="enote-form">
-        <Input
-          text="First Name"
-          label="first_name"
-          type="text"
-          id="first_name"
-          value={first_name}
-          handleChange={this.handleChange}
-        />
-        <Input
-          text="Last Name"
-          label="last_name"
-          type="text"
-          id="last_name"
-          value={last_name}
-          handleChange={this.handleChange}
-        />
-      </form>
+      <div>
+        <h1>Create a new eNote</h1>
+        <form id="enote-form">
+          <Input
+            text="First Name"
+            label="first_name"
+            type="text"
+            id="first_name"
+            value={first_name}
+            handleChange={this.handleChange}
+          />
+          <Input
+            text="Last Name"
+            label="last_name"
+            type="text"
+            id="last_name"
+            value={last_name}
+            handleChange={this.handleChange}
+          />
+        </form>
+      </div>
     );
   }
 }
 export default FormContainer;
-
-const wrapper = document.getElementById("create-enote-form");
-wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;

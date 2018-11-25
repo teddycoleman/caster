@@ -8,6 +8,3 @@ class Enotes extends Component {
   }
 }
 export default Enotes;
-
-// const wrapper = document.getElementById("create-enote-form");
-// wrapper ? ReactDOM.render(<Enotes />, wrapper) : false;
