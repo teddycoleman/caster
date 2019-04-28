@@ -5,47 +5,54 @@ const podcastsByDate = require('../../../podcasts.json');
 
 function DisplayList(props) {
   const podcastsForAllDatesArray = props.podcastsByDate;
-  const listItems = podcastsForAllDatesArray.map((podcastsByDate) => {
+  const listByDate = podcastsForAllDatesArray.map((podcastsByDate, index) => {
     const date = podcastsByDate.date;
     const podcasts = podcastsByDate.podcasts;
     return (
       <div>
         <h1>{date}</h1>
-        <DisplayAllPodcastsForOneDate podcasts={podcasts}/>
+        <DisplayAllPodcastsForOneDate
+          key={index}
+          podcasts={podcasts}/>
       </div>
     );
   })
   return (
     <div>
-      {listItems}
+      {listByDate}
     </div>
   );
 };
 
 function DisplayAllPodcastsForOneDate(props) {
   const podcasts = props.podcasts;
-  const listItems = podcasts.map((podcastData) =>
+  const podcastsForDate = podcasts.map((podcastData, index) =>
     <div>
       <PodcastEntry 
-        key={podcastData.id.toString()}
+        key={index}
         title={podcastData.title}
+        parent={podcastData.parent}
+        parentLink={podcastData.parentLink}
+        parentImage={podcastData.parentImage}
         description={podcastData.description} 
-        link={podcastData.link}/>
+        link={podcastData.link}
+        url={podcastData.url} />
     </div>
   );
+
   return (
     <div>
-      {listItems}
+      {podcastsForDate}
     </div>
   );
 };
 
-
 class PodcastsList extends Component {
   render() {
     return (
-      <div>
-        <DisplayList podcastsByDate={podcastsByDate}/>
+      <div className="col-md-8 col-md-offset-2">
+        <DisplayList
+          podcastsByDate={podcastsByDate}/>
       </div>
     );
   }

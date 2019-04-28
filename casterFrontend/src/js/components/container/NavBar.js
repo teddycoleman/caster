@@ -16,8 +16,8 @@ class NavBar extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/contact">
-                <NavItem href="/contact">Contact Us</NavItem>
+              <LinkContainer to="/about">
+                <NavItem href="/about">About Us</NavItem>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>

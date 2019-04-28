@@ -1,17 +1,10 @@
 import React from "react";
 
-const playerIframe = {
-    width: '100%',
-    height: '130px',
-    borderRadius: '3px',
-    boxShadow: '0 0 25px 0',
-};
-
-const PodcastEntry = ({ title, description, link }) => (
-  <div>
-    <h2> {title} </h2>
-    <p> {description} </p>
-    <iframe scrolling="no" frameBorder="no" style={playerIframe} src={link}></iframe>
+const PodcastEntry = ({ title, description, parent, link, url, parentLink, parentImage }) => (
+  <div className="col-md-12">
+    <img className="col-md-3" src={parentImage}></img>
+    <h2> <a href={url} target="_blank">{title}</a> by <a href={parentLink} target="_blank">{parent}</a></h2>
+    <p> {description} <a href={url} target="_blank">Check out the podcast here</a></p>
   </div>
 );
 export default PodcastEntry;
