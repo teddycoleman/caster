@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PodcastEntry from "../presentational/PodcastEntry";
+import style from '../../../css/main.css';
 
 const podcastsByDate = require('../../../podcasts.json');
 

@@ -1,0 +1,10 @@
+.podcast-entry {
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.no-left-padding {
+  padding-left: 0;
+}
