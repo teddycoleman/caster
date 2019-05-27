@@ -1,27 +1,46 @@
 const express = require('express');
-const mysql = require('mysql');
 const path = require('path');
 const port = process.env.PORT || 8080;
 const app = express();
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'me',
-  password: 'secret',
-  database: 'my_db',
-});
+const { getAllEpisodes } = require('./services/podcasts');
 
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// connection.connect(function(err) {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
+const schema = buildSchema(`
+  type PodcastShow {
+    name: String!
+    link: String!
+    image: String!
+  }
 
-//   console.log('connected as id ' + connection.threadId);
-// });
+  type PodcastEpisode {
+    title: String!
+    date: String!
+    link: String!
+    description: String!
+    podcast_show: PodcastShow!
+  }
+
+  type Query {
+    podcasts: [PodcastEpisode]
+  }
+`);
+
+const root = {
+  podcasts: function() {
+    return getAllEpisodes();
+  },
+};
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

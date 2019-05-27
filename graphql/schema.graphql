@@ -1,0 +1,13 @@
+type PodcastShow {
+  name: String!,
+  link: String!,
+  image: String!,
+}
+
+type PodcastEpisode {
+  title: String,
+  date: String,
+  link: String,
+  description: String,
+  podcast_show: PodcastShow!,
+}

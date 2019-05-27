@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const podcastEpisode = new mongoose.Schema({
   title: String,
@@ -8,7 +9,7 @@ const podcastEpisode = new mongoose.Schema({
   link: String,
   description: String,
   podcast_show: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'PodcastShow',
   },
 });
